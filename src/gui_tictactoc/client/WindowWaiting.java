@@ -8,11 +8,7 @@ import java.awt.*;
  */
 public class WindowWaiting extends JPanel {
     JFrame frame;
-    WindowLogin windowLogin;
 
-    WindowWaiting(WindowLogin windowLogin) {
-        this.windowLogin = windowLogin;
-    }
 
     public void run() {
         JLabel wait = new JLabel("Wait info here",SwingConstants.CENTER);
