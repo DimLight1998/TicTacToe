@@ -15,10 +15,11 @@ public class WindowLogin extends JPanel implements ActionListener {
     private JTextField text_port;
     private JButton button_start;
     private JButton button_exit;
+    private JFrame mainFrame;
 
 
-    public WindowLogin() {
-        JFrame mainFrame = new JFrame("Login");
+    public WindowLogin(Client client) {
+        mainFrame = new JFrame("Login");
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setContentPane(this);
         mainFrame.setResizable(false);
@@ -35,7 +36,7 @@ public class WindowLogin extends JPanel implements ActionListener {
         button_start = new JButton("Start");
         button_exit = new JButton("Exit");
 
-        button_start.addActionListener(this);
+        button_start.addActionListener(client);
         button_exit.addActionListener(this);
 
         panel_address.add(label_address);
@@ -48,19 +49,32 @@ public class WindowLogin extends JPanel implements ActionListener {
         mainFrame.getContentPane().add(panel_address);
         mainFrame.getContentPane().add(panel_port);
         mainFrame.getContentPane().add(panel_buttons);
+    }
 
+
+    public void display() {
         mainFrame.setLocationRelativeTo(null);
-
         mainFrame.setVisible(true);
+    }
+
+
+    public void dispose() {
+        mainFrame.dispose();
+    }
+
+    public String getAddress() {
+        return text_address.getText();
+    }
+
+
+    public String getPort() {
+        return text_port.getText();
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Start")) {
-            // TODO
-            System.out.println("Hello");
-        } else if (e.getActionCommand().equals("Exit")) {
+        if (e.getActionCommand().equals("Exit")) {
             System.exit(0);
         }
     }
