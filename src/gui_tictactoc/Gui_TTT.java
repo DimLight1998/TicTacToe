@@ -1,7 +1,6 @@
 package gui_tictactoc;
 
 import gui_tictactoc.client.Client;
-import gui_tictactoc.client.WindowGame;
 import gui_tictactoc.server.Server;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ public class Gui_TTT {
             Client client = new Client();
             client.run();
         } else {
-            Server server = new Server(8086);
+            Server server = new Server(Integer.parseInt(args[0]));
             server.start();
         }
     }

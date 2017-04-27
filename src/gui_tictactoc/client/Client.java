@@ -1,6 +1,5 @@
 package gui_tictactoc.client;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,45 +15,94 @@ import java.net.Socket;
 /**
  * Created on 2017/04/26.
  */
-public class Client implements ActionListener,MouseListener {
-    WindowLogin windowLogin;
-    WindowGame windowGame;
-    InetAddress address;
-    int port;
-    boolean readyToConnect = false;
-    boolean connected = false;
-    int playerID;
+public class Client implements ActionListener, MouseListener {
+    private WindowLogin windowLogin;
+    private WindowGame  windowGame;
+    private InetAddress address;
+    private int         port;
+    private boolean     readyToConnect = false;
+    private int         playerID;
+
 
     public Client() {
         windowLogin = new WindowLogin(this);
-        windowGame = new WindowGame(this);
+        windowGame  = new WindowGame(this);
     }
 
 
     public void run() throws InterruptedException, IOException {
         windowLogin.display();
 
-        while(!readyToConnect){
+        // check to login
+        while (!readyToConnect) {
             Thread.sleep(100);
         }
 
         windowLogin.dispose();
 
+        // wait for starting
         WindowWaiting windowWaiting = new WindowWaiting();
         windowWaiting.run();
 
-        Socket clientSocket = new Socket(address,port);
-        DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
-        out.writeUTF("0");
-        DataInputStream in = new DataInputStream(clientSocket.getInputStream());
-        System.out.println("you are player "+in.readUTF());
+        Socket           clientSocket = new Socket(address, port);
+        DataOutputStream out          = new DataOutputStream(clientSocket.getOutputStream());
+        DataInputStream  in           = new DataInputStream(clientSocket.getInputStream());
 
-        windowWaiting.dispose();
+        out.writeUTF("0");                           // request an ID
+        playerID = Integer.valueOf(in.readUTF());    // ID get
+        clientSocket.close();
 
-        System.out.println("I am connected !");
+        // wait for another player
+        String resp;
+        do {
+            clientSocket = new Socket(address, port);
+            out          = new DataOutputStream(clientSocket.getOutputStream());
+            in           = new DataInputStream(clientSocket.getInputStream());
+            Thread.sleep(100);
+            out.writeUTF(playerID + "a");
+            resp = in.readUTF();
+            clientSocket.close();
+        } while (resp.equals("no"));
+
+        windowWaiting.dispose();    // game start
 
         windowGame.display();
+        boolean gameOver = false;
+        int     winner   = 0;
 
+        while (!gameOver) {
+            Thread.sleep(100);
+            clientSocket = new Socket(address, port);
+            out          = new DataOutputStream(clientSocket.getOutputStream());
+            in           = new DataInputStream(clientSocket.getInputStream());
+            out.writeUTF("g");
+            resp = in.readUTF();
+
+            if (resp.startsWith("w")) {
+                winner   = Character.getNumericValue(resp.charAt(1));
+                gameOver = true;
+            } else {
+                // simple information request
+                windowGame.update(resp);
+            }
+        }
+
+        clientSocket = new Socket(address, port);
+        out          = new DataOutputStream(clientSocket.getOutputStream());
+        in           = new DataInputStream(clientSocket.getInputStream());
+        out.writeUTF("g!");
+        resp = in.readUTF();
+        windowGame.update(resp);
+
+        if (winner == playerID) {
+            JOptionPane.showMessageDialog(windowGame, "You win !");
+        } else if (winner == 3) {
+            JOptionPane.showMessageDialog(windowGame, "Draw !");
+        } else {
+            JOptionPane.showMessageDialog(windowGame, "You lose !");
+        }
+
+        System.exit(0);
     }
 
 
@@ -62,39 +110,49 @@ public class Client implements ActionListener,MouseListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Start")) {
             try {
-                address = InetAddress.getByName(windowLogin.getAddress());
-                port = Integer.parseInt(windowLogin.getPort());
+                address        = InetAddress.getByName(windowLogin.getAddress());
+                port           = Integer.parseInt(windowLogin.getPort());
                 readyToConnect = true;
-            } catch(Exception e1) {
+            } catch (Exception e1) {
                 JOptionPane.showMessageDialog(windowLogin, "Error info here");
             }
         }
     }
 
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println(1);
-        System.out.println(e.getComponent().getName());
-        System.out.println(1);
+        String send = playerID + "s" + e.getComponent().getName();
+        try {
+            Socket           clientSocket = new Socket(address, port);
+            DataOutputStream out          = new DataOutputStream(clientSocket.getOutputStream());
+            DataInputStream  in           = new DataInputStream(clientSocket.getInputStream());
+            out.writeUTF(send);
+
+            String resp = in.readUTF();
+            if (resp.equals("s")) {
+                int row    = Character.getNumericValue(send.charAt(2));
+                int column = Character.getNumericValue(send.charAt(3));
+                windowGame.update(row, column, playerID);
+            }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }
+
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {}
 
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {}
 
-    }
 
     @Override
-    public void mouseExited(MouseEvent e) {
+    public void mouseEntered(MouseEvent e) {}
 
-    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {}
 }

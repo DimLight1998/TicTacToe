@@ -9,16 +9,12 @@ import java.awt.event.ActionListener;
  * Created on 2017/04/26.
  */
 public class WindowLogin extends JPanel implements ActionListener {
-    private JLabel label_address;
-    private JLabel label_port;
     private JTextField text_address;
     private JTextField text_port;
-    private JButton button_start;
-    private JButton button_exit;
-    private JFrame mainFrame;
+    private JFrame     mainFrame;
 
 
-    public WindowLogin(Client client) {
+    WindowLogin(Client client) {
         mainFrame = new JFrame("Login");
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setContentPane(this);
@@ -26,15 +22,15 @@ public class WindowLogin extends JPanel implements ActionListener {
         mainFrame.setSize(new Dimension(300, 180));
 
         JPanel panel_address = new JPanel(new FlowLayout());
-        JPanel panel_port = new JPanel(new FlowLayout());
+        JPanel panel_port    = new JPanel(new FlowLayout());
         JPanel panel_buttons = new JPanel(new FlowLayout());
 
-        label_address = new JLabel("IP Address:");
-        label_port = new JLabel("Port Number:");
-        text_address = new JTextField(10);
-        text_port = new JTextField(10);
-        button_start = new JButton("Start");
-        button_exit = new JButton("Exit");
+        JLabel label_address = new JLabel("IP Address:");
+        JLabel label_port    = new JLabel("Port Number:");
+        text_address         = new JTextField(10);
+        text_port            = new JTextField(10);
+        JButton button_start = new JButton("Start");
+        JButton button_exit  = new JButton("Exit");
 
         button_start.addActionListener(client);
         button_exit.addActionListener(this);
@@ -52,22 +48,23 @@ public class WindowLogin extends JPanel implements ActionListener {
     }
 
 
-    public void display() {
+    void display() {
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
     }
 
 
-    public void dispose() {
+    void dispose() {
         mainFrame.dispose();
     }
 
-    public String getAddress() {
+
+    String getAddress() {
         return text_address.getText();
     }
 
 
-    public String getPort() {
+    String getPort() {
         return text_port.getText();
     }
 

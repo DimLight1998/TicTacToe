@@ -3,7 +3,7 @@ package gui_tictactoc.server;
 /**
  * Created on 2017/04/26.
  */
-public class GameControl {
+class GameControl {
     private int belong[][];
 
 
@@ -41,6 +41,16 @@ public class GameControl {
 
 
     int getWinner() {
+        int draw = 1;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                draw *= belong[i][j];
+            }
+        }
+        if (draw != 0) {
+            return 3;
+        }
+
         // check diagonal
         if ((belong[0][0] == 1) && (belong[1][1] == 1) && (belong[2][2] == 1)) {
             return 1;
