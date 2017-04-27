@@ -51,7 +51,7 @@ public class Client implements ActionListener,MouseListener {
 
         windowWaiting.dispose();
 
-        System.out.println("I am connnected !");
+        System.out.println("I am connected !");
 
         windowGame.display();
 

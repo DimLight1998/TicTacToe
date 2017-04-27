@@ -28,6 +28,18 @@ public class GameControl {
     }
 
 
+    String getInfo() {
+        String ret = "";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                ret += belong[i][j];
+            }
+        }
+
+        return ret;
+    }
+
+
     int getWinner() {
         // check diagonal
         if ((belong[0][0] == 1) && (belong[1][1] == 1) && (belong[2][2] == 1)) {
