@@ -23,11 +23,24 @@ public class Client implements ActionListener {
 
     public void run() throws InterruptedException {
         windowLogin.display();
+
         while(!readyToConnect){
             Thread.sleep(100);
         }
 
+        windowLogin.dispose();
+
         System.out.println("I am ready to connect !");
+        WindowWaiting windowWaiting = new WindowWaiting(windowLogin);
+        windowWaiting.run();
+
+        while(!connected) {
+            Thread.sleep(100);
+        }
+
+        windowWaiting.dispose();
+
+        System.out.println("I am connnected !");
 
     }
 
@@ -38,7 +51,6 @@ public class Client implements ActionListener {
             try {
                 address = InetAddress.getByName(windowLogin.getAddress());
                 port = Integer.parseInt(windowLogin.getPort());
-                windowLogin.dispose();
                 readyToConnect = true;
             } catch(Exception e1) {
                 JOptionPane.showMessageDialog(windowLogin, "Error info here");
