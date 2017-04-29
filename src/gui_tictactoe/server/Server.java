@@ -1,4 +1,4 @@
-package gui_tictactoc.server;
+package gui_tictactoe.server;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

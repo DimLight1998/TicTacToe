@@ -1,4 +1,4 @@
-package gui_tictactoc.server;
+package gui_tictactoe.server;
 
 /**
  * Created on 2017/04/26.

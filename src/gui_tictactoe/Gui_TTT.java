@@ -1,7 +1,7 @@
-package gui_tictactoc;
+package gui_tictactoe;
 
-import gui_tictactoc.client.Client;
-import gui_tictactoc.server.Server;
+import gui_tictactoe.client.Client;
+import gui_tictactoe.server.Server;
 
 import java.io.IOException;
 

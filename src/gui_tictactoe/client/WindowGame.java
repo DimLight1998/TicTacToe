@@ -1,4 +1,4 @@
-package gui_tictactoc.client;
+package gui_tictactoe.client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +32,7 @@ class WindowGame extends JPanel {
             }
         }
 
-        mainFrame = new JFrame("Tic-Tac-Toc");
+        mainFrame = new JFrame("Tic-Tac-Toe");
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setResizable(false);
         mainFrame.setSize(400, 400);

@@ -1,4 +1,4 @@
-package gui_tictactoc.server;
+package gui_tictactoe.server;
 
 import javax.swing.*;
 
