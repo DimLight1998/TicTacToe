@@ -43,9 +43,9 @@ class WindowGame extends JPanel {
 
     void update(int row, int column, int belong) {
         if (belong == 1) {
-            labels_chessboard[row][column].setIcon(new ImageIcon("src/res/cross.png"));
+            labels_chessboard[row][column].setIcon(new ImageIcon("res/cross.png"));
         } else if (belong == 2) {
-            labels_chessboard[row][column].setIcon(new ImageIcon("src/res/circle.png"));
+            labels_chessboard[row][column].setIcon(new ImageIcon("res/circle.png"));
         } else if (belong == 0) {
             labels_chessboard[row][column].setIcon(null);
         }

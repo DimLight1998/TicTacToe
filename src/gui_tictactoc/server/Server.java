@@ -11,18 +11,18 @@ import java.net.Socket;
 /**
  * Created on 2017/04/26.
  */
-public class Server extends Thread implements ActionListener{
+public class Server extends Thread implements ActionListener {
     private ServerSocket serverSocket;
-    private boolean player_1_ready = false;
-    private boolean player_2_ready = false;
-    private GameControl gameControl;
+    private boolean      player_1_ready = false;
+    private boolean      player_2_ready = false;
+    private boolean      someone_finish = false;
+    private GameControl  gameControl;
     private WindowServer windowServer;
 
 
     public Server() throws IOException {
-        gameControl = new GameControl();
+        gameControl  = new GameControl();
         windowServer = new WindowServer(this);
-
     }
 
 
@@ -33,7 +33,7 @@ public class Server extends Thread implements ActionListener{
             try {
                 Socket server = serverSocket.accept();
                 System.out.println("Client from " + server.getRemoteSocketAddress());
-                DataInputStream in = new DataInputStream(server.getInputStream());
+                DataInputStream  in  = new DataInputStream(server.getInputStream());
                 DataOutputStream out = new DataOutputStream(server.getOutputStream());
 
                 String infoRead = in.readUTF();
@@ -87,7 +87,7 @@ public class Server extends Thread implements ActionListener{
                     if (turn == 2) {
                         out.writeUTF("i");    // illegal
                     } else {
-                        int row = Character.getNumericValue(infoRead.charAt(2));
+                        int row    = Character.getNumericValue(infoRead.charAt(2));
                         int column = Character.getNumericValue(infoRead.charAt(3));
 
                         if (gameControl.getBelong(row, column) != 0) {
@@ -104,7 +104,7 @@ public class Server extends Thread implements ActionListener{
                     if (turn == 1) {
                         out.writeUTF("i");
                     } else {
-                        int row = Character.getNumericValue(infoRead.charAt(2));
+                        int row    = Character.getNumericValue(infoRead.charAt(2));
                         int column = Character.getNumericValue(infoRead.charAt(3));
 
                         if (gameControl.getBelong(row, column) != 0) {
@@ -117,12 +117,30 @@ public class Server extends Thread implements ActionListener{
                     }
                 }
 
+                if (infoRead.startsWith("f")) {
+                    if (!someone_finish) {
+                        someone_finish = true;
+                    } else {
+                        server.close();
+                        break;
+                    }
+                }
+
                 out.writeUTF("!");    // illegal
                 server.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
+        windowServer.showEnd();
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        windowServer.dispose();
     }
 
 
@@ -133,7 +151,7 @@ public class Server extends Thread implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("Start")) {
+        if (e.getActionCommand().equals("Start")) {
             try {
                 serverSocket = new ServerSocket(windowServer.getPort());
                 windowServer.showRunning();

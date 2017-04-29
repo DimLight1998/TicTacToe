@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -70,6 +71,8 @@ public class Client implements ActionListener, MouseListener {
         boolean gameOver = false;
         int     winner   = 0;
 
+        PrintStream printStream = new PrintStream(playerID + "log.txt");
+
         while (!gameOver) {
             Thread.sleep(100);
             clientSocket = new Socket(address, port);
@@ -85,7 +88,14 @@ public class Client implements ActionListener, MouseListener {
                 // simple information request
                 windowGame.update(resp);
             }
+
+            clientSocket.close();
+
+
+            printStream.append(resp + "\n");
         }
+
+        printStream.close();
 
         clientSocket = new Socket(address, port);
         out          = new DataOutputStream(clientSocket.getOutputStream());
@@ -93,6 +103,8 @@ public class Client implements ActionListener, MouseListener {
         out.writeUTF("g!");
         resp = in.readUTF();
         windowGame.update(resp);
+        clientSocket.close();
+
 
         if (winner == playerID) {
             JOptionPane.showMessageDialog(windowGame, "You win !");
@@ -101,6 +113,11 @@ public class Client implements ActionListener, MouseListener {
         } else {
             JOptionPane.showMessageDialog(windowGame, "You lose !");
         }
+
+        clientSocket = new Socket(address, port);
+        out          = new DataOutputStream(clientSocket.getOutputStream());
+        out.writeUTF("f");
+        clientSocket.close();
 
         System.exit(0);
     }
@@ -114,7 +131,7 @@ public class Client implements ActionListener, MouseListener {
                 port           = Integer.parseInt(windowLogin.getPort());
                 readyToConnect = true;
             } catch (Exception e1) {
-                JOptionPane.showMessageDialog(windowLogin, "Error info here");
+                JOptionPane.showMessageDialog(windowLogin, "Invalid information.");
             }
         }
     }
@@ -135,6 +152,8 @@ public class Client implements ActionListener, MouseListener {
                 int column = Character.getNumericValue(send.charAt(3));
                 windowGame.update(row, column, playerID);
             }
+
+            clientSocket.close();
         } catch (IOException e1) {
             e1.printStackTrace();
         }

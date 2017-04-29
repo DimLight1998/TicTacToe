@@ -5,19 +5,19 @@ import javax.swing.*;
 /**
  * Created on 2017/04/29.
  */
-class WindowServer extends JPanel{
-    private JFrame mainFrame = new JFrame("server");
-    private JTextField text_port =new JTextField(10);
-    private JLabel lable_running = new JLabel("");
+class WindowServer extends JPanel {
+    private JFrame     mainFrame     = new JFrame("server");
+    private JTextField text_port     = new JTextField(10);
+    private JLabel     label_running = new JLabel("");
 
 
     WindowServer(Server server) {
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setContentPane(this);
         mainFrame.setResizable(false);
-        mainFrame.setSize(300,180);
+        mainFrame.setSize(300, 180);
 
-        lable_running.setSize(20,2);
+        label_running.setSize(20, 2);
 
         JButton button_start = new JButton("Start");
 
@@ -25,7 +25,7 @@ class WindowServer extends JPanel{
         this.add(label_port);
         this.add(text_port);
         this.add(button_start);
-        this.add(lable_running);
+        this.add(label_running);
 
         button_start.addActionListener(server);
     }
@@ -43,6 +43,16 @@ class WindowServer extends JPanel{
 
 
     void showRunning() {
-        lable_running.setText("Server running...");
+        label_running.setText("Server running...");
+    }
+
+
+    void showEnd() {
+        JOptionPane.showMessageDialog(mainFrame, "Game is over");
+    }
+
+
+    void dispose() {
+        mainFrame.dispose();
     }
 }
