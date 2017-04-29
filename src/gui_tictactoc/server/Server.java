@@ -1,5 +1,7 @@
 package gui_tictactoc.server;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -9,16 +11,18 @@ import java.net.Socket;
 /**
  * Created on 2017/04/26.
  */
-public class Server extends Thread {
+public class Server extends Thread implements ActionListener{
     private ServerSocket serverSocket;
-    private boolean      player_1_ready = false;
-    private boolean      player_2_ready = false;
-    private GameControl  gameControl;
+    private boolean player_1_ready = false;
+    private boolean player_2_ready = false;
+    private GameControl gameControl;
+    private WindowServer windowServer;
 
 
-    public Server(int port) throws IOException {
-        serverSocket = new ServerSocket(port);
-        gameControl  = new GameControl();
+    public Server() throws IOException {
+        gameControl = new GameControl();
+        windowServer = new WindowServer(this);
+
     }
 
 
@@ -29,10 +33,11 @@ public class Server extends Thread {
             try {
                 Socket server = serverSocket.accept();
                 System.out.println("Client from " + server.getRemoteSocketAddress());
-                DataInputStream  in  = new DataInputStream(server.getInputStream());
+                DataInputStream in = new DataInputStream(server.getInputStream());
                 DataOutputStream out = new DataOutputStream(server.getOutputStream());
 
                 String infoRead = in.readUTF();
+                System.out.println(infoRead);
 
                 // client tries to connect
                 if (infoRead.startsWith("0")) {    // request an ID (beginning with 0)
@@ -82,7 +87,7 @@ public class Server extends Thread {
                     if (turn == 2) {
                         out.writeUTF("i");    // illegal
                     } else {
-                        int row    = Character.getNumericValue(infoRead.charAt(2));
+                        int row = Character.getNumericValue(infoRead.charAt(2));
                         int column = Character.getNumericValue(infoRead.charAt(3));
 
                         if (gameControl.getBelong(row, column) != 0) {
@@ -99,7 +104,7 @@ public class Server extends Thread {
                     if (turn == 1) {
                         out.writeUTF("i");
                     } else {
-                        int row    = Character.getNumericValue(infoRead.charAt(2));
+                        int row = Character.getNumericValue(infoRead.charAt(2));
                         int column = Character.getNumericValue(infoRead.charAt(3));
 
                         if (gameControl.getBelong(row, column) != 0) {
@@ -116,6 +121,25 @@ public class Server extends Thread {
                 server.close();
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+
+    public void startServer() {
+        windowServer.display();
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("Start")) {
+            try {
+                serverSocket = new ServerSocket(windowServer.getPort());
+                windowServer.showRunning();
+                start();
+            } catch (IOException e1) {
+                e1.printStackTrace();
             }
         }
     }

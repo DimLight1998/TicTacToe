@@ -15,8 +15,8 @@ public class Gui_TTT {
             Client client = new Client();
             client.run();
         } else {
-            Server server = new Server(Integer.parseInt(args[0]));
-            server.start();
+            Server server = new Server();
+            server.startServer();
         }
     }
 
