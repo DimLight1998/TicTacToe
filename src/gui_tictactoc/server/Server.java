@@ -32,12 +32,10 @@ public class Server extends Thread implements ActionListener {
             System.out.println("Waiting for client on port " + serverSocket.getLocalPort());
             try {
                 Socket server = serverSocket.accept();
-                System.out.println("Client from " + server.getRemoteSocketAddress());
                 DataInputStream  in  = new DataInputStream(server.getInputStream());
                 DataOutputStream out = new DataOutputStream(server.getOutputStream());
 
                 String infoRead = in.readUTF();
-                System.out.println(infoRead);
 
                 // client tries to connect
                 if (infoRead.startsWith("0")) {    // request an ID (beginning with 0)

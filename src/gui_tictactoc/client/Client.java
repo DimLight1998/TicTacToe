@@ -9,7 +9,6 @@ import java.awt.event.MouseListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -71,8 +70,6 @@ public class Client implements ActionListener, MouseListener {
         boolean gameOver = false;
         int     winner   = 0;
 
-        PrintStream printStream = new PrintStream(playerID + "log.txt");
-
         while (!gameOver) {
             Thread.sleep(100);
             clientSocket = new Socket(address, port);
@@ -90,12 +87,7 @@ public class Client implements ActionListener, MouseListener {
             }
 
             clientSocket.close();
-
-
-            printStream.append(resp + "\n");
         }
-
-        printStream.close();
 
         clientSocket = new Socket(address, port);
         out          = new DataOutputStream(clientSocket.getOutputStream());

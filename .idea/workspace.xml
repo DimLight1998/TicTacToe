@@ -7,14 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff5203d8-e8b6-4bf9-9500-c609380f9cb7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui_tictactoc/OpenClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui_tictactoc/OpenServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui_tictactoc/Gui_TTT.java" afterPath="$PROJECT_DIR$/src/gui_tictactoc/Gui_TTT.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui_tictactoc/client/Client.java" afterPath="$PROJECT_DIR$/src/gui_tictactoc/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui_tictactoc/client/WindowGame.java" afterPath="$PROJECT_DIR$/src/gui_tictactoc/client/WindowGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui_tictactoc/server/Server.java" afterPath="$PROJECT_DIR$/src/gui_tictactoc/server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui_tictactoc/server/WindowServer.java" afterPath="$PROJECT_DIR$/src/gui_tictactoc/server/WindowServer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,23 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Gui_TTT.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/Gui_TTT.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WindowGame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/client/WindowGame.java">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,8 +109,8 @@
         <option value="$PROJECT_DIR$/src/gui_tictactoc/OpenServer.java" />
         <option value="$PROJECT_DIR$/src/gui_tictactoc/OpenClient.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/gui_tictactoc/client/Client.java" />
         <option value="$PROJECT_DIR$/src/gui_tictactoc/client/WindowGame.java" />
+        <option value="$PROJECT_DIR$/src/gui_tictactoc/client/Client.java" />
         <option value="$PROJECT_DIR$/src/gui_tictactoc/server/Server.java" />
       </list>
     </option>
@@ -234,6 +217,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gui_tictactoc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project9" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui_tictactoc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -851,7 +856,7 @@
       <workItem from="1493354063327" duration="1741000" />
       <workItem from="1493434703369" duration="332000" />
       <workItem from="1493440757992" duration="4253000" />
-      <workItem from="1493445047215" duration="2792000" />
+      <workItem from="1493445047215" duration="2913000" />
     </task>
     <task id="LOCAL-00001" summary="Add GUI for login.">
       <created>1493224231305</created>
@@ -902,11 +907,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493443088596</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fix a bug that picture doesn't show out of IDE.">
+      <created>1493447920364</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1493447920365</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40179000" />
+    <option name="totallyTimeSpent" value="40300000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -984,7 +996,8 @@
     <MESSAGE value="Complete server logic." />
     <MESSAGE value="Complete all." />
     <MESSAGE value="Add GUI for server." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add GUI for server." />
+    <MESSAGE value="Fix a bug that picture doesn't show out of IDE." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix a bug that picture doesn't show out of IDE." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1081,8 +1094,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5331#5332#0" expanded="true" />
-            <element signature="e#5369#5370#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1133,8 +1144,6 @@
           <caret line="29" column="27" lean-forward="false" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5331#5332#0" expanded="true" />
-            <element signature="e#5369#5370#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1165,8 +1174,6 @@
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5331#5332#0" expanded="true" />
-            <element signature="e#5369#5370#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1223,8 +1230,6 @@
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5331#5332#0" expanded="true" />
-            <element signature="e#5369#5370#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1354,14 +1359,14 @@
         <state relative-caret-position="136">
           <caret line="8" column="52" lean-forward="true" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
           <folding>
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#1018#1019#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-            <element signature="e#1103#1104#0" expanded="true" />
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1197#1198#0" expanded="true" />
-            <element signature="e#1220#1221#0" expanded="true" />
-            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#979#980#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+            <element signature="e#1065#1066#0" expanded="true" />
+            <element signature="e#1123#1124#0" expanded="true" />
+            <element signature="e#1146#1147#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1241#1242#0" expanded="true" />
+            <element signature="e#1276#1277#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1415,28 +1420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="72" column="53" lean-forward="false" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5331#5332#0" expanded="true" />
-            <element signature="e#5369#5370#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/client/WindowGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -1449,8 +1432,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/Gui_TTT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui_tictactoc/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
